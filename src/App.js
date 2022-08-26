@@ -28,19 +28,34 @@ function App() {
   }
   return (      //JSX starting
     <>
-      <form>
-        <input id='id' type='text' placeholder='Band Id' />
-        <input id='name' type='text' placeholder='Band Name' />
-        <button onClick={addBand}>Add Band</button>
+      <form className="row g-3">
+      <div class="col-md-6">
+        <label id='id' className="form-label">Id</label>
+        <input id='id' type="text" className="form-control" />
+      </div>
+      <div class="col-md-6">
+        <label id='name' className="form-label">Name</label>
+        <input id='name' type="text" className="form-control" />
+      </div>
+      <hr />
+      <div className="col-12">
+        <button 
+          className="btn btn-outline-secondary"
+          onClick={addBand}
+        >
+            Add Band
+        </button>
+      </div>
       </form>
       <div className="mt-3">
-        <ul className="list-group">
           {bands.map(bnd => (
-            <li key={bnd.id} className="list-group-item">
-              {bnd.id} - {bnd.name}
-            </li>
+          <div key={bnd.id} className="card mb-2 shadow-sm">
+              <div className="card-body">
+              <p className="card-text">{bnd.id} - {bnd.name}</p>
+              </div>
+          </div>
           ))}
-        </ul>
+
       </div>
     </>
   );
