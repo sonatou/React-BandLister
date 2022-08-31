@@ -29,13 +29,17 @@ function App() {
   return (      //JSX starting
     <>
       <form className="row g-3">
-      <div class="col-md-6">
-        <label id='id' className="form-label">Id</label>
-        <input id='id' type="text" className="form-control" />
+      <div className="col-md-6">
+        <span class="badge text-bg-dark">
+          <label className="form-label">Id</label>
+        </span>
+        <input id='id' type="text" className="form-control mt-2" />
       </div>
-      <div class="col-md-6">
-        <label id='name' className="form-label">Name</label>
-        <input id='name' type="text" className="form-control" />
+      <div className="col-md-6">
+        <span class="badge text-bg-dark">
+          <label  className="form-label">Name</label>
+        </span>
+        <input id='name' type="text" className="form-control mt-2" />
       </div>
       <hr />
       <div className="col-12">
@@ -51,7 +55,30 @@ function App() {
           {bands.map(bnd => (
           <div key={bnd.id} className="card mb-2 shadow-sm">
               <div className="card-body">
-              <p className="card-text">{bnd.id} - {bnd.name}</p>
+                <div className="d-flex justify-content-between">
+                  <h5 className="card-title">
+                  <span className="badge bg-secondary me-1">{bnd.id}</span>
+                   - {bnd.name}
+                  </h5>
+                  <h6>
+                  Estilo:
+                  <span className='ms-1 text-black'>
+                    <i className="fa-solid fa-compact-disc me-1"></i>
+                    Rock
+                  </span>
+                  </h6>
+                </div>
+                <p className="card-text"> {bnd.name}</p>
+                <div className="d-flex justify-content-end pt-2 m-0">
+                  <button className="btn btn-outline-primary me-2">
+                    <i className='fas fa-pen me-2'></i>
+                    Editar
+                  </button>
+                  <button className="btn btn-outline-danger">
+                    <i className='fas fa-trash me-2'></i>
+                    Deletar
+                  </button>
+                </div>
               </div>
           </div>
           ))}
