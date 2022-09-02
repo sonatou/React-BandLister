@@ -2,6 +2,7 @@ import { useState } from 'react';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import { counter } from '@fortawesome/fontawesome-svg-core';
 
 let initialState = [      //setting the initialstate of the items usestate array
   {
@@ -12,11 +13,18 @@ let initialState = [      //setting the initialstate of the items usestate array
   },
   {
     "id": 2,
-    "genre": '1',
-    "song": 'Nothing Else Matters',
-    "name": "Metallica"
+    "genre": '2',
+    "song": 'Contexto',
+    "name": "PlanetHemp"
+  },
+  {
+    "id": 3,
+    "genre": '3',
+    "song": 'Arabella',
+    "name": "Arctic Monkeys"
   },
 ];
+
 function App() {
   const [bands, setBands] = useState(initialState)    //creating useState to be able to change the content inside of it by using 'setBands'
 
@@ -33,6 +41,11 @@ function App() {
     setBands([...bands, { ...band }]); //setting the usestate copying the already existing items in 'bands' and addig a new band as a obj
   }
 
+  function deleteBand (id){
+    const filterBands = bands.filter(band => band.id !== id)
+    setBands([...filterBands])
+  }
+
   function genreLabel(param) {
     switch (param) {
       case '1':
@@ -45,19 +58,20 @@ function App() {
         return 'undefined';
     }
   }
-  function genreIcon(param) {
+
+  function genreStyle(param, icon) {
     switch (param) {
       case '1':
-        return 'drum';
+        return icon ? 'drum' : 'dark';
       case '2':
-        return 'compact-disc';
+        return icon ? 'compact-disc' : 'success';
       case '3':
-        return 'guitar';
+        return icon ? 'guitar' : 'warning';
       default:
-        return 'volume-xmark';
+        return icon ? 'volume-xmark' : 'primary';
     }
   }
-  
+
   return (      //JSX starting
     <>
       <form className="row g-3">
@@ -65,7 +79,18 @@ function App() {
           <span className="badge text-bg-dark">
             <label className="form-label">Id</label>
           </span>
-          <input id='id' type="text" className="form-control mt-2" />
+          <input
+            id='id'
+            type="text"
+            className="form-control mt-2"
+            readOnly
+            value={
+              Math.max.apply(
+                Math,
+                bands.map((item) => item.id)
+              ) + 1
+            }
+          />
         </div>
         <div className="col-md-6">
           <label className="form-label">
@@ -104,7 +129,7 @@ function App() {
       </form>
       <div className="mt-3">
         {bands.map(bnd => (
-          <div key={bnd.id} className="card mb-2 shadow-sm">
+          <div key={bnd.id} className={"card mb-2 shadow-sm border-" + genreStyle(bnd.genre)}>
             <div className="card-body">
               <div className="d-flex justify-content-between">
                 <h5 className="card-title">
@@ -112,11 +137,11 @@ function App() {
                   - {bnd.name}
                 </h5>
                 <h6>
-                <span className="badge text-bg-warning">
-                   Genre:
-                </span>                 
+                  <span className="badge text-bg-warning">
+                    Genre:
+                  </span>
                   <span className='ms-1 text-black'>
-                    <i className={"me-1 fa-solid fa-"+ genreIcon(bnd.genre)}></i>
+                    <i className={"me-1 fa-solid fa-" + genreStyle(bnd.genre, true)}></i>
                     {genreLabel(bnd.genre)}
                   </span>
                 </h6>
@@ -132,7 +157,7 @@ function App() {
                   <i className='fas fa-pen me-2'></i>
                   Edit
                 </button>
-                <button className="btn btn-outline-danger">
+                <button className="btn btn-outline-danger" onClick={() => deleteBand(bnd.id)}>
                   <i className='fas fa-trash me-2'></i>
                   Delete
                 </button>
