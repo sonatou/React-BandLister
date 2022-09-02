@@ -75,7 +75,7 @@ function App() {
     <>
       <form className="row g-3">
         <div className="col-md-6">
-          <span className="badge text-bg-dark">
+          <span className="badge bg-dark">
             <label className="form-label">Id</label>
           </span>
           <input
