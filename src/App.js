@@ -2,7 +2,6 @@ import { useState } from 'react';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
-import { counter } from '@fortawesome/fontawesome-svg-core';
 
 let initialState = [      //setting the initialstate of the items usestate array
   {
@@ -41,12 +40,12 @@ function App() {
     setBands([...bands, { ...band }]); //setting the usestate copying the already existing items in 'bands' and addig a new band as a obj
   }
 
-  function deleteBand (id){
+  function deleteBand(id){              //function to delete band, by overwriting with the bands that have not the selected id
     const filterBands = bands.filter(band => band.id !== id)
     setBands([...filterBands])
   }
 
-  function genreLabel(param) {
+  function genreLabel(param) {          //function to handle the genre label
     switch (param) {
       case '1':
         return 'Rock';
@@ -59,7 +58,7 @@ function App() {
     }
   }
 
-  function genreStyle(param, icon) {
+  function genreStyle(param, icon) {            //function to handle the icon and border color by the genre
     switch (param) {
       case '1':
         return icon ? 'drum' : 'dark';
