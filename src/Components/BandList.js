@@ -10,6 +10,7 @@ export default function BandList(props) {
           bands={props.bands}
           deleteBand={props.deleteBand}
           bnd={bnd}
+          getBand={props.getBand}
         />
       ))}
     </div>

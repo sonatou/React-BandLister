@@ -57,7 +57,10 @@ export default function Band(props) {
           {props.bnd.song}
         </p>
         <div className="d-flex justify-content-end pt-2 m-0">
-          <button className="btn btn-outline-primary me-2">
+          <button 
+          className="btn btn-outline-primary me-2"
+          onClick={() => props.getBand(props.bnd.id)}
+          >
             <i className="fas fa-pen me-2"></i>
             Edit
           </button>
