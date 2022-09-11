@@ -95,7 +95,7 @@ export default function BandForm(props) {
         <hr />
         <div className="col-12 mt-0">
           {band.id === 0 ? (
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-success" type="submit">
               <i className="fas fa-plus me-2"></i>
               Band
             </button>
