@@ -101,11 +101,12 @@ export default function BandForm(props) {
             </button>
           ) : (
             <>
-              <button className="btn btn-outline-success me-2" type="submit">
+              <button className="btn btn-success me-2" type="submit">
                 <i className="fas fa-plus me-2"></i>
                 Save
               </button>
-              <button className="btn btn-outline-danger" onClick={handleCancel}>
+              <button className="btn btn-danger" onClick={handleCancel}>
+                  <i className="fas fa-trash me-2"></i>
                 Cancel
               </button>
             </>
