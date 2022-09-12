@@ -29,17 +29,23 @@ let initialState = [
 
 function App() {
   const [bands, setBands] = useState(initialState); //creating useState to be able to change the content inside of it by using 'setBands'
-  const [band, setBand] = useState({id: 0});
-  const [index, setIndex] = useState(0)
+  const [band, setBand] = useState({ id: 0 });
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
-      bands.length <= 0 ? setIndex(1) : setIndex( Math.max.apply(Math, bands.map((item) => item.id)) + 1)
-  }, [bands])
+    bands.length <= 0
+      ? setIndex(1)
+      : setIndex(
+          Math.max.apply(
+            Math,
+            bands.map((item) => item.id)
+          ) + 1
+        );
+  }, [bands]);
 
   function addBand(bnd) {
     //method to add a new band
-    setBands([...bands, 
-      { ...bnd, id: index }]); //setting the usestate copying the already existing items in 'bands' and addig a new band as a obj
+    setBands([...bands, { ...bnd, id: index }]); //setting the usestate copying the already existing items in 'bands' and addig a new band as a obj
   }
 
   function cancelBand() {
@@ -47,7 +53,7 @@ function App() {
   }
 
   function editBand(bnd) {
-    setBands(bands.map((item) => item.id === bnd.id ? bnd : item));
+    setBands(bands.map((item) => (item.id === bnd.id ? bnd : item)));
     setBand({ id: 0 });
   }
 
