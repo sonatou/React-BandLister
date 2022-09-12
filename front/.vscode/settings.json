@@ -1,6 +1,0 @@
-{
-    "emmet.excludeLanguages": [],
-    "emmet.includeLanguages": {
-        "react": "JSX"
-    }
-}
