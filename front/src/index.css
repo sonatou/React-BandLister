@@ -1,7 +1,7 @@
 @import url('../node_modules/@fortawesome/fontawesome-free/css/all.css');
 
 body {
-	background: linear-gradient(-45deg, #20524f, #2c858b, #26d4e0, #1efafa);
+	background: linear-gradient(-45deg, #1C1551, #69306D, #157A6E, #18C9C0);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 	height: 100vh;
